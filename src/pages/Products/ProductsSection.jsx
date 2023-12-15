@@ -5,7 +5,7 @@ const ProductsSection = () => {
   return (
     <div className="border-l border-zinc-100 px-6 flex-1">
       {/* Header */}
-      <div className="mt-8">
+    <div className="mt-8">
         <p className="text-[24px] font-medium">Show Results for Product</p>
       </div>
       <div className=" py-4 flex justify-between">

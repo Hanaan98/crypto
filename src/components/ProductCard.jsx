@@ -1,10 +1,13 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const ProductCard = () => {
 
+  const navigate = useNavigate()
+
   return (
-      <div className=" cursor-pointer rounded-md border border-zinc-200 overflow-hidden">
-        <div className="w-full  h-[120px]">
+      <div onClick={() => navigate("/products/121bc2sd")} className=" cursor-pointer overflow-hidden rounded-md border border-zinc-200 ">
+        <div className="w-[150px]  h-[120px]">
           <img
             style={{ height: "100%", width: "100%" }}
             className=""
