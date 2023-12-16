@@ -1,18 +1,93 @@
-import React from "react";
+import { useEffect, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { MdWallet } from "react-icons/md";
+import { CgProfile } from "react-icons/cg";
+import { MdOutlineShoppingCart } from "react-icons/md";
+import SearchBar from "./SearchBar";
 
-const Navbar = () => {
+const Navbar = ({ onclick }) => {
+  const [scroll, setScroll] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 20;
+      setScroll(isScrolled);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
-    <div className="h-[67px] items-center flex  shadow-md px-4">
-      <div className="flex-1">
-        <p className=" text-lg font-bold">Logo</p>
-      </div>
-      <div className="flex-1 flex justify-center">
-        <div className="border border-zinc-100 rounded-2xl p-1">
-            <input placeholder="Search anything ..." className="pl-2 w-[400px] border-none focus:outline-none "/>
-        </div>
-      </div>
-      <div className="flex-1 flex justify-end">
-            Logout
+    <div className="flex flex-col items-center justify-center mt-24">
+      <div className="flex flex-col">
+        <nav
+          className={`flex justify-around py-4 bg-primary z-20 px-10  gap-20 ${
+            scroll ? "backdrop-blur-md shadow-xl bg-black" : ""
+          }  w-full fixed top-0 left-0 right-0 z-10`}
+        >
+          <div className="flex items-center  justify-between gap-5 ">
+            <Link to="/">
+              <h3 className="text-3xl font-bold text-heading border-r border-r-[#323232] pr-5">
+                Logo
+              </h3>
+            </Link>
+
+            <div className="items-center hidden space-x-8 lg:flex text-heading font-semibold">
+              <NavLink
+                to="/"
+                className={(navClass) =>
+                  `flex text-${
+                    navClass.isActive ? "secondary" : "text"
+                  } hover:text-[#ffffffaa] cursor-pointer transition-colors duration-300`
+                }
+              >
+                Drops
+              </NavLink>
+
+              <NavLink
+                to="/tours"
+                className={(navClass) =>
+                  `flex text-${
+                    navClass.isActive ? "secondary" : "text"
+                  } hover:text-[#ffffffaa] cursor-pointer transition-colors duration-300`
+                }
+              >
+                Stats
+              </NavLink>
+
+              <NavLink
+                to="/about"
+                className={(navClass) =>
+                  `flex text-${
+                    navClass.isActive ? "secondary" : "text"
+                  } hover:text-[#ffffffaa] cursor-pointer transition-colors duration-300`
+                }
+              >
+                Create
+              </NavLink>
+            </div>
+          </div>
+
+          <SearchBar />
+
+          <div className="flex items-center justify-between gap-2">
+            <button className="bg-accent flex items-center justify-center gap-2 text-white px-3 py-3 rounded-xl font-semibold hover:bg-tertiary">
+              <MdWallet className="inline-block text-2xl" />
+              Login
+            </button>
+            <button className="bg-accent flex items-center justify-center gap-2 text-white px-3 py-3 rounded-xl font-semibold hover:bg-tertiary">
+              <CgProfile className="inline-block text-2xl" />
+            </button>
+            <button
+              onClick={() => onclick()}
+              className="bg-accent flex items-center justify-center gap-2 text-white px-3 py-3 rounded-xl font-semibold hover:bg-tertiary"
+            >
+              <MdOutlineShoppingCart className="inline-block text-2xl" />
+            </button>
+          </div>
+        </nav>
       </div>
     </div>
   );
