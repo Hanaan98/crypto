@@ -7,6 +7,7 @@ import SearchBar from "./SearchBar";
 
 const Navbar = ({ onclick }) => {
   const [scroll, setScroll] = useState(false);
+
   useEffect(() => {
     const handleScroll = () => {
       const isScrolled = window.scrollY > 20;
@@ -23,8 +24,8 @@ const Navbar = ({ onclick }) => {
     <div className="flex flex-col items-center justify-center mt-24">
       <div className="flex flex-col">
         <nav
-          className={`flex justify-around py-4 bg-primary z-20 px-10  gap-20 ${
-            scroll ? "backdrop-blur-md shadow-xl bg-black" : ""
+          className={`flex justify-around py-4  z-20 px-10  gap-20 ${
+            scroll ? "backdrop-blur-md shadow-xl bg-accent" : ""
           }  w-full fixed top-0 left-0 right-0 z-10`}
         >
           <div className="flex items-center  justify-between gap-5 ">
@@ -43,46 +44,56 @@ const Navbar = ({ onclick }) => {
                   } hover:text-[#ffffffaa] cursor-pointer transition-colors duration-300`
                 }
               >
-                Drops
+                Home
               </NavLink>
 
               <NavLink
-                to="/tours"
+                to="/products"
                 className={(navClass) =>
                   `flex text-${
                     navClass.isActive ? "secondary" : "text"
                   } hover:text-[#ffffffaa] cursor-pointer transition-colors duration-300`
                 }
               >
-                Stats
+                Products
               </NavLink>
 
               <NavLink
-                to="/about"
+                to="/contact"
                 className={(navClass) =>
                   `flex text-${
                     navClass.isActive ? "secondary" : "text"
                   } hover:text-[#ffffffaa] cursor-pointer transition-colors duration-300`
                 }
               >
-                Create
+                Contact
               </NavLink>
             </div>
           </div>
 
-          <SearchBar />
+          <SearchBar scroll={scroll} />
 
           <div className="flex items-center justify-between gap-2">
-            <button className="bg-accent flex items-center justify-center gap-2 text-white px-3 py-3 rounded-xl font-semibold hover:bg-tertiary">
+            <button
+              className={`bg-accent flex items-center justify-center gap-2 text-white px-3 ${
+                scroll && "bg-tertiary"
+              }  py-3 rounded-xl font-semibold hover:bg-tertiary`}
+            >
               <MdWallet className="inline-block text-2xl" />
               Login
             </button>
-            <button className="bg-accent flex items-center justify-center gap-2 text-white px-3 py-3 rounded-xl font-semibold hover:bg-tertiary">
+            <button
+              className={`bg-accent flex items-center justify-center gap-2 text-white px-3 ${
+                scroll && "bg-tertiary"
+              }  py-3 rounded-xl font-semibold hover:bg-tertiary`}
+            >
               <CgProfile className="inline-block text-2xl" />
             </button>
             <button
               onClick={() => onclick()}
-              className="bg-accent flex items-center justify-center gap-2 text-white px-3 py-3 rounded-xl font-semibold hover:bg-tertiary"
+              className={`bg-accent flex items-center justify-center gap-2 text-white px-3 ${
+                scroll && "bg-tertiary"
+              }  py-3 rounded-xl font-semibold hover:bg-tertiary`}
             >
               <MdOutlineShoppingCart className="inline-block text-2xl" />
             </button>

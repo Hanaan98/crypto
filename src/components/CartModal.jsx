@@ -6,7 +6,7 @@ import CartItem from "./CartItem";
 const length = 1;
 function CartModal({ onclick }) {
   return (
-    <div className="w-full  bg-accent h-screen flex flex-col rounded-xl gap-5 overflow-hidden">
+    <div className="w-full  bg-accent h-screen flex flex-col rounded-s-3xl gap-5 overflow-hidden">
       <div className="flex flex-col w-full mt-5">
         <div className="flex items-center justify-between w-full px-6 sticky top-0 left-0 right-0 z-50 ">
           <h3 className="text-2xl text-white font-bold mb-2 ">Your Cart</h3>

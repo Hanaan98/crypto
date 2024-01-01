@@ -3,7 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-<<<<<<< HEAD
 * {
   font-family: "Poppins", sans-serif;
 }
@@ -20,10 +19,22 @@ body {
 .main::-webkit-scrollbar {
   display: none;
 }
-=======
-*{
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+
+::-webkit-scrollbar {
+  width: 10px;
 }
->>>>>>> 2a5f4da9289046ec2e03c65981821230ab2eb7ac
+
+::-webkit-scrollbar-thumb {
+  background-color: #121212;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #1b1b1b;
+  /* Set a contrasting color for the track */
+}
+
+* {
+  scrollbar-color: #121212 #f0f0f0 !important;
+  scrollbar-width: thin !important;
+}

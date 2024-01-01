@@ -3,13 +3,8 @@ import React from "react";
 const CartItem = () => {
   return (
     <tr className="mb-3">
-<<<<<<< HEAD
       <td className="py-2">2</td>
       <td className="py-2">
-=======
-      <td  className="py-2">2</td>
-      <td  className="py-2">
->>>>>>> 2a5f4da9289046ec2e03c65981821230ab2eb7ac
         <div className="flex items-center gap-2">
           <div>
             <img
@@ -25,28 +20,17 @@ const CartItem = () => {
           </div>
         </div>
       </td>
-<<<<<<< HEAD
       <td className="py-2">
-=======
-      <td  className="py-2">
->>>>>>> 2a5f4da9289046ec2e03c65981821230ab2eb7ac
         <div className="flex justify-between w-[80px] border border-zinc-300 rounded-xl">
           <button className="flex-1 border-r">-</button>
           <span className="flex-1 text-center">0</span>
           <button className="flex-1 border-l">+</button>
         </div>
       </td>
-<<<<<<< HEAD
       <td className="py-2">
         <p>Q*P</p>
       </td>
       <td className="py-2">
-=======
-      <td  className="py-2">
-        <p>Q*P</p>
-      </td>
-      <td  className="py-2">
->>>>>>> 2a5f4da9289046ec2e03c65981821230ab2eb7ac
         <button>remove</button>
       </td>
     </tr>

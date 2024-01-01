@@ -6,7 +6,7 @@ const Hero = () => {
       <img
         src={image}
         alt="hero"
-        className="w-full h-full object-cover rounded-2xl"
+        className="w-full h-[80vh] object-cover rounded-2xl"
       />
     </div>
   );
