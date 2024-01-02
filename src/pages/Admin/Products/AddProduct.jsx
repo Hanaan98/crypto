@@ -29,7 +29,7 @@ const AddProduct = () => {
   return (
     <div className=" pb-9">
       <div>
-        <h1 className="text-white font-bold text-[22px]">Add Product</h1>
+        <h1 className="text-white font-semibold text-3xl">Add Product</h1>
       </div>
       <div className="mt-8">
         <div style={{ flex: 1 }} className="flex flex-col w-full gap-5">

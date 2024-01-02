@@ -10,8 +10,8 @@ const AllProducts = () => {
     <div>
       <div>
         <div className="flex justify-between items-center ">
-          <h1 className=" text-[22px] text-white font-bold">Products</h1>
-          <button onClick={() => navigate("add")} className="text-black bg-white rounded-lg py-2 px-4">
+          <h1 className=" text-3xl text-white font-semibold">Products</h1>
+          <button onClick={() => navigate("add")} className="text-black  text-md bg-white rounded-lg py-2 px-4">
             Add New
           </button>
         </div>
