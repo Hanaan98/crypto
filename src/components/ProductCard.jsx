@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product , link }) => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
   return (
     <Link
-      to="/products/1"
+      to={link || "/products/1"}
       className="w-56 bg-accent rounded-2xl cursor-pointer overflow-hidden hover:-translate-y-3 hover:transition-all hover:duration-300"
     >
       <div className="w-full">

@@ -7,6 +7,13 @@ import Products from "./pages/Products/index.jsx";
 import ProductDetails from "./pages/ProductDetails/index.jsx";
 import Cart from "./pages/Cart/index.jsx";
 import Contact from "./pages/Contact/index.jsx";
+import AdminDashboard from "./pages/Admin/index.jsx";
+import AdminProducts from "./pages/Admin/Products/index.jsx";
+import AdminOrders from "./pages/Admin/Orders/index.jsx";
+import AdminCategories from "./pages/Admin/Categories/index.jsx";
+import AllProducts from "./pages/Admin/Products/AllProducts.jsx";
+import AddProduct from "./pages/Admin/Products/AddProduct.jsx";
+import ViewProduct from "./pages/Admin/Products/ViewProduct.jsx";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +35,42 @@ const router = createBrowserRouter([
   {
     path: "contact",
     element: <Contact />,
+  },
+  {
+    path: "admin",
+    element: <AdminDashboard />,
+    children : [
+      {
+        path : "products",
+        element :  <AdminProducts/>,
+        children : [
+          {
+            path : "",
+            element : <AllProducts/>
+          },
+          {
+            path : ":id",
+            element : <ViewProduct/>
+          },
+          {
+            path : "add",
+            element : <AddProduct/>
+          },
+          {
+            path : "add/:id",
+            element : <AddProduct/>
+          }
+        ]
+      },
+      {
+        path : "orders",
+        element : <AdminOrders/>
+      },
+      {
+        path : "categories",
+        element : <AdminCategories/>
+      }
+    ]
   },
 ]);
 
