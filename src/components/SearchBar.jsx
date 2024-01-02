@@ -31,7 +31,7 @@ const SearchBar = ({ scroll }) => {
         placeholder="Search"
         onChange={searchChangeHandler}
         value={search}
-        className="bg-transparent w-full text-heading outline-none"
+        className="bg-transparent  w-full text-heading outline-none"
         aria-label="Search"
       />
       {showClose && (

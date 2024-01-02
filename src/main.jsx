@@ -7,6 +7,7 @@ import Products from "./pages/Products/index.jsx";
 import ProductDetails from "./pages/ProductDetails/index.jsx";
 import Cart from "./pages/Cart/index.jsx";
 import Contact from "./pages/Contact/index.jsx";
+import Checkout from "./pages/Checkout/index.jsx";
 import AdminDashboard from "./pages/Admin/index.jsx";
 import AdminProducts from "./pages/Admin/Products/index.jsx";
 import AdminOrders from "./pages/Admin/Orders/index.jsx";
@@ -39,51 +40,54 @@ const router = createBrowserRouter([
     element: <Contact />,
   },
   {
+    path: "checkout",
+    element: <Checkout />,
+  },
+  {
     path: "admin",
     element: <AdminDashboard />,
-    children : [
+    children: [
       {
-        path : "products",
-        element :  <AdminProducts/>,
-        children : [
+        path: "products",
+        element: <AdminProducts />,
+        children: [
           {
-            path : "",
-            element : <AllProducts/>
+            path: "",
+            element: <AllProducts />,
           },
           {
-            path : ":id",
-            element : <ViewProduct/>
+            path: ":id",
+            element: <ViewProduct />,
           },
           {
-            path : "add",
-            element : <AddProduct/>
+            path: "add",
+            element: <AddProduct />,
           },
           {
-            path : "add/:id",
-            element : <AddProduct/>
-          }
-        ]
+            path: "add/:id",
+            element: <AddProduct />,
+          },
+        ],
       },
       {
-        path : "orders",
-        element : <AdminOrders/>,
-        children : [
+        path: "orders",
+        element: <AdminOrders />,
+        children: [
           {
-            path : "",
-            element : <OrderListing/>
+            path: "",
+            element: <OrderListing />,
           },
           {
-            path : ":id",
-            element : <OrderDetails/>
-          }
-        ]
-
+            path: ":id",
+            element: <OrderDetails />,
+          },
+        ],
       },
       {
-        path : "categories",
-        element : <AdminCategories/>
-      }
-    ]
+        path: "categories",
+        element: <AdminCategories />,
+      },
+    ],
   },
 ]);
 

@@ -64,13 +64,15 @@ const OrderListing = () => {
                           Abdul Saboor
                         </td>
                         <td className="text-md text-gray-300 font-light px-6 py-4 whitespace-nowrap text-center">
-                          <Link to="123" className=" underline">171be13</Link>
+                          <Link to="123" className=" underline">
+                            171be13
+                          </Link>
                         </td>
                         <td className="text-md text-gray-300 font-light px-6 py-4 whitespace-nowrap text-center">
                           0.31 ETH
                         </td>
                         <td className="text-md text-gray-300 font-light px-6 py-4 whitespace-nowrap text-center">
-                          20-12-20023
+                          20-12-2023
                         </td>
                         <td>
                           <OrderStatus

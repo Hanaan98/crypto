@@ -113,7 +113,7 @@ const ProductsSection = () => {
         <p className="mb-2 text-[#ffffffbb] text-sm">
           Total Products: {ArtProducts.length}
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-5">
+        <div className="flex items-center flex-wrap gap-3 mt-5">
           {currentProducts.map((product, index) => (
             <ProductCard key={index} product={product} />
           ))}
