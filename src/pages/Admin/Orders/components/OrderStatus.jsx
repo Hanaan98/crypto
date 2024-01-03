@@ -1,8 +1,8 @@
 import React from "react";
 
 const statusMap = {
-  completed: {
-    title: "Completed",
+  delivered: {
+    title: "Delivered",
     color: "#67D194",
   },
   pending: {
