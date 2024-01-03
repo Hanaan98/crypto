@@ -54,7 +54,7 @@ const OrderListing = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {new Array(10).fill(0).map((_, index) => {
+                  {new Array(6).fill(0).map((_, index) => {
                     return (
                       <tr key={index} className=" border-b">
                         <td className="px-6 py-4 whitespace-nowrap text-md font-medium text-gray-300 text-center">
@@ -74,7 +74,7 @@ const OrderListing = () => {
                         </td>
                         <td>
                           <OrderStatus
-                            status={index % 2 == 0 ? "completed" : "pending"}
+                            status={index % 2 == 0 ? "delivered" : "pending"}
                           />
                         </td>
                       </tr>

@@ -65,7 +65,7 @@ const AdminCategories = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {new Array(10).fill(0).map((_, index) => {
+                    {new Array(6).fill(0).map((_, index) => {
                       return (
                         <tr key={index} className=" border-b">
                           <td className="px-6 py-4 whitespace-nowrap text-md font-medium text-gray-300 text-center">
