@@ -38,3 +38,6 @@ body {
   scrollbar-color: #121212 #f0f0f0 !important;
   scrollbar-width: thin !important;
 }
+body {
+  overflow: auto;
+}

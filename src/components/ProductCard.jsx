@@ -1,21 +1,21 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const ProductCard = ({ product , link }) => {
+const ProductCard = ({ product, link }) => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
   return (
     <Link
-      to={link || "/products/1"}
+      to={link || `/products/${product.id}`}
       className="w-56 bg-accent rounded-2xl cursor-pointer overflow-hidden hover:-translate-y-3 hover:transition-all hover:duration-300"
     >
       <div className="w-full">
         <img
           style={{ width: "100%" }}
-          className="bg-cover bg-center h-40"
-          src={product.image}
+          className="bg-cover object-cover bg-center h-40"
+          src={product.images[0].src}
         />
       </div>
       <div className="flex flex-col gap-5 p-4">

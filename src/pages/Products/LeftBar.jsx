@@ -13,7 +13,7 @@ const LeftBar = () => {
 
       <FilterGroup
         title="Price Range"
-        filters={["$0 - $25", "$25 - $50", "$50+"]}
+        filters={["0 - 25 USDC", "25 - 50 USDC", "50 USDC+"]}
       />
 
       <FilterGroup

@@ -1,77 +1,34 @@
-import { useState } from "react";
-import { Disclosure, RadioGroup, Tab } from "@headlessui/react";
+import { useEffect, useState, useContext } from "react";
+import { Disclosure, Tab } from "@headlessui/react";
 import { StarIcon } from "@heroicons/react/solid";
-import { HeartIcon, MinusSmIcon, PlusSmIcon } from "@heroicons/react/outline";
-
-const product = {
-  name: "Zip Tote Basket",
-  price: "$140",
-  rating: 4,
-  images: [
-    {
-      id: 1,
-      name: "Angled view",
-      src: "https://i.seadn.io/gcs/files/66569ce21fefe99c997132692fd57f48.png?auto=format&dpr=1&h=500&fr=1",
-      alt: "Angled front view with bag zipped and handles upright.",
-    },
-    {
-      id: 1,
-      name: "Angled view",
-      src: "https://i.seadn.io/gcs/files/66569ce21fefe99c997132692fd57f48.png?auto=format&dpr=1&h=500&fr=1",
-      alt: "Angled front view with bag zipped and handles upright.",
-    },
-    {
-      id: 1,
-      name: "Angled view",
-      src: "https://i.seadn.io/gcs/files/66569ce21fefe99c997132692fd57f48.png?auto=format&dpr=1&h=500&fr=1",
-      alt: "Angled front view with bag zipped and handles upright.",
-    },
-    {
-      id: 1,
-      name: "Angled view",
-      src: "https://i.seadn.io/gcs/files/66569ce21fefe99c997132692fd57f48.png?auto=format&dpr=1&h=500&fr=1",
-      alt: "Angled front view with bag zipped and handles upright.",
-    },
-    // More images...
-  ],
-  colors: [
-    {
-      name: "Washed Black",
-      bgColor: "bg-gray-700",
-      selectedColor: "ring-gray-700",
-    },
-    { name: "White", bgColor: "bg-white", selectedColor: "ring-gray-400" },
-    {
-      name: "Washed Gray",
-      bgColor: "bg-gray-500",
-      selectedColor: "ring-gray-500",
-    },
-  ],
-  description: `
-    <p>The Zip Tote Basket is the perfect midpoint between shopping tote and comfy backpack. With convertible straps, you can hand carry, should sling, or backpack this convenient and spacious bag. The zip top and durable canvas construction keeps your goods protected for all-day use.</p>
-  `,
-  details: [
-    {
-      name: "Features",
-      items: [
-        "Multiple strap configurations",
-        "Spacious interior with top zip",
-        "Leather handle and tabs",
-        "Interior dividers",
-        "Stainless strap loops",
-        "Double stitched construction",
-        "Water-resistant",
-      ],
-    },
-    // More sections...
-  ],
-};
-
+import { MinusSmIcon, PlusSmIcon } from "@heroicons/react/outline";
+import { useParams } from "react-router-dom";
+import { ART_PRODUCTS } from "../../Data";
+import CartContext from "../../Context/CartContext";
+import toast from "react-hot-toast";
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function DetailsSection() {
+  const cart = useContext(CartContext);
+  const { id } = useParams();
+  const [product, setProduct] = useState(null);
+  useEffect(() => {
+    setProduct(ART_PRODUCTS.find((product) => product.id === id));
+  }, [id]);
+  const clickHandler = () => {
+    cart.addItem({
+      id: product.id,
+      title: product.title,
+      price: product.price,
+      image: product.images[0].src,
+      amount: 1,
+    });
+    toast.success("Item Added to Cart");
+  };
+  if (!product) return <div className="text-white text-center">Loading...</div>;
+
   return (
     <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
       <div className="lg:grid lg:grid-cols-2 lg:gap-x-8 lg:items-start">
@@ -122,15 +79,14 @@ export default function DetailsSection() {
           </Tab.Panels>
         </Tab.Group>
 
-        {/* Product info */}
         <div className="mt-10 px-4 sm:px-0 sm:mt-16 lg:mt-0">
           <h1 className="text-3xl font-extrabold tracking-tight text-heading">
-            {product.name}
+            {product.title}
           </h1>
 
           <div className="mt-3">
             <h2 className="sr-only">Product information</h2>
-            <p className="text-3xl text-heading">{product.price}</p>
+            <p className="text-3xl text-heading">{product.price} USDC</p>
           </div>
 
           {/* Reviews */}
@@ -165,7 +121,10 @@ export default function DetailsSection() {
           </div>
 
           <div className="mt-10 flex sm:flex-col1">
-            <button className="max-w-xs flex-1 bg-secondary border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:opacity-90  sm:w-full">
+            <button
+              onClick={clickHandler}
+              className="max-w-xs flex-1 bg-secondary border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:opacity-90  sm:w-full"
+            >
               Add to bag
             </button>
           </div>

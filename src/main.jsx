@@ -17,7 +17,7 @@ import AddProduct from "./pages/Admin/Products/AddProduct.jsx";
 import ViewProduct from "./pages/Admin/Products/ViewProduct.jsx";
 import OrderListing from "./pages/Admin/Orders/OrderListing.jsx";
 import OrderDetails from "./pages/Admin/Orders/OrderDetails.jsx";
-
+import CartProvider from "./Context/CartProvider.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -92,5 +92,7 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <RouterProvider router={router} />
+  <CartProvider>
+    <RouterProvider router={router} />
+  </CartProvider>
 );

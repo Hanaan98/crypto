@@ -1,7 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Layout from "../../components/Layout";
+import cartContext from "../../Context/CartContext";
 
 const Checkout = () => {
+  const cart = useContext(cartContext);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  const formSubmitHandler = (e) => {
+    e.preventDefault();
+  };
   return (
     <Layout>
       <div>
@@ -27,97 +35,60 @@ const Checkout = () => {
                 role="list"
                 className="text-sm font-medium text-heading divide-y divide-gray-200"
               >
-                <li className="flex items-start py-6 space-x-4">
-                  <img
-                    src="https://tailwindui.com/img/ecommerce-images/checkout-page-04-product-01.jpg"
-                    alt="Moss green canvas compact backpack with double top zipper, zipper front pouch, and matching carry handle and backpack straps."
-                    className="flex-none w-20 h-20 rounded-md object-center object-cover"
-                  />
-                  <div className="flex-auto space-y-1">
-                    <h3>Micro Backpack</h3>
-                    <p className="text-gray-500">Moss</p>
-                    <p className="text-gray-500">5L</p>
-                  </div>
-                  <p className="flex-none text-base font-medium">$70.00</p>
-                </li>
+                {cart.items.map((item) => (
+                  <li
+                    key={item.id}
+                    className="flex items-center justify-between py-6"
+                  >
+                    <div className="flex  gap-2">
+                      <img
+                        src={item.image}
+                        alt=""
+                        className="w-[4.5rem] h-[4.5rem] rounded-xl object-cover"
+                      />
+
+                      <div className="flex flex-col gap-4 ">
+                        <h1 className="text-white text-md font-semibold tracking-wider">
+                          {item.title}
+                        </h1>
+                        <h1 className="text-gray-300">
+                          Quantity: {item.amount}
+                        </h1>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h1 className="text-white text-md font-semibold">
+                        {item.amount * item.price} USDC
+                      </h1>
+                    </div>
+                  </li>
+                ))}
               </ul>
 
               <dl className="hidden text-sm font-medium text-heading space-y-6 border-t border-gray-200 pt-6 lg:block">
                 <div className="flex items-center justify-between">
                   <dt className="text-white">Subtotal</dt>
-                  <dd>$320.00</dd>
+                  <dd>{cart.totalAmount} USDC</dd>
                 </div>
 
                 <div className="flex items-center justify-between">
                   <dt className="text-white">Shipping</dt>
-                  <dd>$15.00</dd>
-                </div>
-
-                <div className="flex items-center justify-between">
-                  <dt className="text-white">Taxes</dt>
-                  <dd>$26.80</dd>
+                  <dd>Free</dd>
                 </div>
 
                 <div className="flex items-center justify-between border-t border-gray-200 pt-6">
                   <dt className="text-base">Total</dt>
-                  <dd className="text-base">$361.80</dd>
+                  <dd className="text-base">{cart.totalAmount} USDC</dd>
                 </div>
               </dl>
-
-              <div className="fixed bottom-0 inset-x-0 flex flex-col-reverse text-sm font-medium text-heading lg:hidden">
-                <div className="relative z-10 bg-white border-t border-gray-200 px-4 sm:px-6">
-                  <div className="max-w-lg mx-auto">
-                    <button
-                      type="button"
-                      className="w-full flex items-center py-6 font-medium"
-                      aria-expanded="false"
-                    >
-                      <span className="text-base mr-auto">Total</span>
-                      <span className="text-base mr-2">$361.80</span>
-
-                      <svg
-                        className="w-5 h-5 text-gray-500"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                        aria-hidden="true"
-                      >
-                        <path d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-
-                <div>
-                  <div
-                    className="fixed inset-0 bg-black bg-opacity-25"
-                    aria-hidden="true"
-                  ></div>
-
-                  <div className="relative bg-white px-4 py-6 sm:px-6">
-                    <dl className="max-w-lg mx-auto space-y-6">
-                      <div className="flex items-center justify-between">
-                        <dt className="text-white">Subtotal</dt>
-                        <dd>$320.00</dd>
-                      </div>
-
-                      <div className="flex items-center justify-between">
-                        <dt className="text-white">Shipping</dt>
-                        <dd>$15.00</dd>
-                      </div>
-
-                      <div className="flex items-center justify-between">
-                        <dt className="text-white">Taxes</dt>
-                        <dd>$26.80</dd>
-                      </div>
-                    </dl>
-                  </div>
-                </div>
-              </div>
             </div>
           </section>
 
-          <form className="pt-16 pb-36 px-4 sm:px-6 lg:pb-16 lg:px-0 lg:row-start-1 lg:col-start-1">
+          <form
+            onSubmit={formSubmitHandler}
+            className="pt-16 pb-36 px-4 sm:px-6 lg:pb-16 lg:px-0 lg:row-start-1 lg:col-start-1"
+          >
             <div className="max-w-lg mx-auto lg:max-w-none">
               <section aria-labelledby="contact-info-heading">
                 <h2
@@ -338,10 +309,7 @@ const Checkout = () => {
               </section>
 
               <div className="mt-10 pt-6 border-t border-gray-200 sm:flex sm:items-center sm:justify-between">
-                <button
-                  type="submit"
-                  className="w-full bg-secondary border border-transparent rounded-md shadow-sm py-2 px-4 text-sm font-medium text-white hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500 sm:ml-6 sm:order-last sm:w-auto"
-                >
+                <button className="w-full bg-secondary border border-transparent rounded-md shadow-sm py-2 px-4 text-sm font-medium text-white hover:opacity-90 sm:ml-6 sm:order-last sm:w-auto">
                   Confirm
                 </button>
                 <p className="mt-4 text-center text-sm text-gray-500 sm:mt-0 sm:text-left">
