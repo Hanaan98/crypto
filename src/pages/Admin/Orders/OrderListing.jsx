@@ -1,12 +1,21 @@
 import React from "react";
 import OrderStatus from "./components/OrderStatus";
 import { Link } from "react-router-dom";
+import { MdOutlineSearch } from "react-icons/md";
 
 const OrderListing = () => {
   return (
     <div className="pb-20">
-      <div>
+      <div className="flex justify-between items-center">
         <h1 className="text-white font-semibold text-3xl">Orders</h1>
+        <div className="flex items-center rounded-lg px-[8px] py-[8px] bg-white">
+            <input
+              placeholder="Search Here"
+              className="flex-1 focus:outline-none"
+              type="text"
+            />
+            <MdOutlineSearch className="text-[20px] font-bold" />
+          </div>
       </div>
       <div className="flex flex-col bg-accent rounded-lg mt-6 px-3 pb-2">
         <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -76,7 +85,7 @@ const OrderListing = () => {
                         </td>
                         <td>
                           <OrderStatus
-                            status={index % 2 == 0 ? "delivered" : "pending"}
+                            status={index % 2 == 0 ? "completed" : "pending"}
                           />
                         </td>
                       </tr>

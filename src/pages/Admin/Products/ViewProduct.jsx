@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Rating from "../../ProductDetails/components/Rating";
 import CategoryTag from "../components/CategoryTag";
+import { IoMdArrowBack } from "react-icons/io";
 
 const unitOptions = [
   {
@@ -27,15 +28,20 @@ const categoryOptions = [
 
 const ViewProduct = ({ id }) => {
   const params = useParams();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   console.log("ID ::: ", params.id);
   return (
     <div>
       <div className="flex items-center gap-6">
-        <h1 className="text-3xl font-semibold text-white">
-          Product Details
-        </h1>
+        <div className="flex items-center gap-2">
+          <IoMdArrowBack
+            onClick={() => navigate(-1)}
+            className="text-white text-2xl cursor-pointer"
+          />
+          <h1 className="text-3xl font-semibold text-white">Product Details</h1>
+        </div>
+
         <button
           onClick={() => navigate("/admin/products/add/1212")}
           className="text-black bg-white rounded-lg py-1 px-3"
@@ -44,7 +50,6 @@ const ViewProduct = ({ id }) => {
         </button>
       </div>
       <div className="flex gap-10 mt-4">
-
         {/* Image */}
         <div style={{ flex: 1 }}>
           <div>
@@ -55,7 +60,10 @@ const ViewProduct = ({ id }) => {
           </div>
         </div>
         {/* Right Details Section */}
-        <div style={{ flex: 1 }} className="flex-col w-full flex justify-around">
+        <div
+          style={{ flex: 1 }}
+          className="flex-col w-full flex justify-around"
+        >
           {/* Title */}
           <h1 className="text-2xl font-semibold text-heading mb-4">
             Product Title
@@ -93,7 +101,6 @@ const ViewProduct = ({ id }) => {
           </div>
         </div>
       </div>
-
 
       {/* Description */}
       <div className="mt-6">

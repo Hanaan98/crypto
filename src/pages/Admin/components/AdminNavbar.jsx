@@ -6,7 +6,7 @@ const AdminNavbar = () => {
   return (
     <div className="flex h-[80px]">
         <nav
-          className={`flex justify-between z-20 px-10 gap-20 w-full`}
+          className={`flex justify-between z-20 px-6 gap-20 w-full`}
         >
           <div className="flex items-center  justify-between gap-5 ">
             <Link to="/admin">

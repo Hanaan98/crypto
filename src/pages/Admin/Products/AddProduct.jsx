@@ -2,6 +2,8 @@ import React from "react";
 import FormInput from "../components/FormInput";
 import FormSelect from "../components/FormSelect";
 import thumbnail from "../../../assets/UploadThumbnail.png";
+import { IoMdArrowBack } from "react-icons/io";
+import { useNavigate, useNavigation } from "react-router-dom";
 
 const unitOptions = [
   {
@@ -26,9 +28,11 @@ const categoryOptions = [
 ];
 
 const AddProduct = () => {
+  const navigate = useNavigate();
   return (
     <div className=" pb-9">
-      <div>
+      <div className="flex items-center gap-2">
+        <IoMdArrowBack onClick={()=> navigate(-1)} className="text-white text-2xl cursor-pointer"/>
         <h1 className="text-white font-semibold text-3xl">Add Product</h1>
       </div>
       <div className="mt-8">

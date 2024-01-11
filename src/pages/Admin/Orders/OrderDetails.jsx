@@ -1,9 +1,11 @@
 import React from "react";
 import FormSelect from "../components/FormSelect";
+import { IoMdArrowBack } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 
 const statusOptions = [
   {
-    name : "delivered",
+    name : "completed",
     value : -1
   },{
     name : "pending",
@@ -15,9 +17,14 @@ const statusOptions = [
 ]
 
 const OrderDetails = () => {
+  const navigate = useNavigate()
   return (
     <div>
-      <div>
+      <div className="flex gap-2 items-center">
+      <IoMdArrowBack
+            onClick={() => navigate(-1)}
+            className="text-white text-2xl cursor-pointer"
+          />
         <h1 className="text-white text-3xl font-semibold">Order Details</h1>
       </div>
       <div className="w-1/2 flex flex-col gap-3 mt-4">

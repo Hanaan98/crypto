@@ -7,17 +7,17 @@ import { useNavigate } from "react-router-dom";
 const AllProducts = () => {
   const navigate = useNavigate()
   return (
-    <div>
+    <div className="pb-5">
       <div>
         <div className="flex justify-between items-center ">
           <h1 className=" text-3xl text-white font-semibold">Products</h1>
-          <button onClick={() => navigate("add")} className="text-black  text-md bg-white rounded-lg py-2 px-4">
+          <button onClick={() => navigate("add")} className="text-black  text-md bg-white rounded-lg py-1 px-3">
             Add New
           </button>
         </div>
         <div className="mt-4 flex justify-between items-center bg-accent rounded-xl p-4">
           <div>
-            <p className="text-white">Filters</p>
+            <p className="text-white">Sort By :</p>
           </div>
           <div className="flex items-center rounded-lg px-[8px] py-[8px] bg-white">
             <input

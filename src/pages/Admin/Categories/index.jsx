@@ -15,25 +15,25 @@ const AdminCategories = () => {
   };
 
   return (
-    <div className="p-6 relative">
-      <AddCategoryModal
-        isOpen={modalIsOpen}
-        closeModal={closeModal}
-      />
-      <div>
+    <div className="p-6 relative h-[100%]">
+      {modalIsOpen && <AddCategoryModal onClose={closeModal}
+      />}
+      {/* <AddCategoryModal/> */}
+      <div className={`flex flex-col w-full h-[100%] ${modalIsOpen && "opacity-5"}`}>
         <div className="flex justify-between items-center">
           <h1 className="text-3xl text-white font-semibold">Categories</h1>
           <button
-          onClick={() =>  setModalIsOpen(true)}
+            onClick={openModal}
             className="text-black  text-md bg-white rounded-lg py-1 px-3"
           >
             Add New
           </button>
         </div>
 
-        <div className="flex flex-col bg-accent rounded-lg mt-6 px-3 pb-2">
-          <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
-            <div className=" inline-block min-w-full sm:px-6 lg:px-8">
+
+        <div className="flex overflow-y-auto flex-1 flex-col bg-accent rounded-lg mt-6 px-3 pb-2">
+          <div className="overflow-x-auto">
+            <div className="h-[100%] inline-block min-w-full sm:px-6 lg:px-8">
               <div className="overflow-hidden">
                 <table className="min-w-full">
                   <thead className=" border-b">
@@ -65,7 +65,7 @@ const AdminCategories = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {new Array(6).fill(0).map((_, index) => {
+                    {new Array(20).fill(0).map((_, index) => {
                       return (
                         <tr key={index} className=" border-b">
                           <td className="px-6 py-4 whitespace-nowrap text-md font-medium text-gray-300 text-center">

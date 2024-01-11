@@ -1,12 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { MdWallet } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import SearchBar from "./SearchBar";
+import cartContext from "../Context/CartContext";
 
 const Navbar = ({ onclick }) => {
   const [scroll, setScroll] = useState(false);
+  const context = useContext(cartContext);
+  console.log(context.count);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -91,10 +94,15 @@ const Navbar = ({ onclick }) => {
             </button>
             <button
               onClick={() => onclick()}
-              className={`bg-accent flex items-center justify-center gap-2 text-white px-3 ${
+              className={`bg-accent flex items-center justify-center gap-2 text-white px-3 relative ${
                 scroll && "bg-tertiary"
               }  py-3 rounded-xl font-semibold hover:bg-tertiary`}
             >
+              {context.items.length > 0 && <div style={{borderRadius:"50%"}} className="h-[18px] w-[18px] flex justify-center items-center absolute top-0 right-0 border-r-[50%] bg-white">
+                <span  className="text-black text-xs">
+                  {context.items.length}
+                </span>
+              </div>}
               <MdOutlineShoppingCart className="inline-block text-2xl" />
             </button>
           </div>

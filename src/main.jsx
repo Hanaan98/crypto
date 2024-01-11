@@ -18,6 +18,7 @@ import ViewProduct from "./pages/Admin/Products/ViewProduct.jsx";
 import OrderListing from "./pages/Admin/Orders/OrderListing.jsx";
 import OrderDetails from "./pages/Admin/Orders/OrderDetails.jsx";
 import CartProvider from "./Context/CartProvider.jsx";
+import AdminMain from "./pages/Admin/Main/index.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
     path: "admin",
     element: <AdminDashboard />,
     children: [
+      {
+        path:"",
+        element:<AdminMain/>
+      },
       {
         path: "products",
         element: <AdminProducts />,
