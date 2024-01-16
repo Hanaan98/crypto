@@ -1,6 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import Layout from "../../components/Layout";
 import cartContext from "../../Context/CartContext";
+import { ConnectWallet } from "@thirdweb-dev/react";
 
 const Checkout = () => {
   const cart = useContext(cartContext);
@@ -309,12 +310,13 @@ const Checkout = () => {
               </section>
 
               <div className="mt-10 pt-6 border-t border-gray-200 sm:flex sm:items-center sm:justify-between">
-                <button className="w-full bg-secondary border border-transparent rounded-md shadow-sm py-2 px-4 text-sm font-medium text-white hover:opacity-90 sm:ml-6 sm:order-last sm:w-auto">
+                {/* <button className="w-full bg-secondary border border-transparent rounded-md shadow-sm py-2 px-4 text-sm font-medium text-white hover:opacity-90 sm:ml-6 sm:order-last sm:w-auto">
                   Confirm
-                </button>
+                </button> */}
                 <p className="mt-4 text-center text-sm text-gray-500 sm:mt-0 sm:text-left">
                   Check your details before continuing.
                 </p>
+                <ConnectWallet style={{backgroundColor:"#2077CE",color:"white"}}  btnTitle="Confirm" className="w-full bg-secondary border border-transparent rounded-md shadow-sm py-2 px-4 text-sm font-medium text-white hover:opacity-90 sm:ml-6 sm:order-last sm:w-auto" />
               </div>
             </div>
           </form>

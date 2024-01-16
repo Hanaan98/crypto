@@ -19,6 +19,7 @@ import OrderListing from "./pages/Admin/Orders/OrderListing.jsx";
 import OrderDetails from "./pages/Admin/Orders/OrderDetails.jsx";
 import CartProvider from "./Context/CartProvider.jsx";
 import AdminMain from "./pages/Admin/Main/index.jsx";
+import { ConnectWallet, ThirdwebProvider } from "@thirdweb-dev/react";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -49,8 +50,8 @@ const router = createBrowserRouter([
     element: <AdminDashboard />,
     children: [
       {
-        path:"",
-        element:<AdminMain/>
+        path: "",
+        element: <AdminMain />,
       },
       {
         path: "products",
@@ -97,7 +98,9 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <CartProvider>
-    <RouterProvider router={router} />
-  </CartProvider>
+  <ThirdwebProvider activeChain={"ethereum"}>
+    <CartProvider>
+      <RouterProvider router={router} />
+    </CartProvider>
+  </ThirdwebProvider>
 );
